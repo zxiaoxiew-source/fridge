@@ -140,7 +140,7 @@
       var image = button.querySelector('img');
       if (!image) return;
       lastArtifactTrigger = button;
-      lightboxImage.src = image.src;
+      lightboxImage.src = image.currentSrc || image.src;
       lightboxImage.alt = image.alt;
       lightboxCaption.textContent = button.dataset.caption || image.alt;
       lightbox.classList.add('open');

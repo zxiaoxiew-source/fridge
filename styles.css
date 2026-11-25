@@ -1502,3 +1502,45 @@ body.presentation .slide-hint { display: block; }
   .feedback-scroll { max-height: none; overflow: visible; }
   .feedback-set[aria-hidden="true"] { display: none; }
 }
+
+/* ===== 首页调整：引导句可见度 / 便签墙双图并排 / APP演示动图 ===== */
+
+/* 浅色背景上的引导句：提高可读性（深绿块内仍保持白色版式） */
+.opportunity-close.on-paper {
+  color: var(--ink-2);
+  border-top-color: rgba(18, 51, 40, .22);
+}
+
+/* 便签墙：手写实拍 + 原话誊写，两图一排、等高对齐 */
+.idea-photo-row {
+  display: grid;
+  grid-template-columns: 0.9fr 1.25fr;
+  gap: 18px;
+  align-items: stretch;
+  margin-top: 18px;
+}
+.idea-photo-row .idea-photo { margin: 0; display: flex; flex-direction: column; }
+.idea-photo-row .idea-photo .idea-photo-btn {
+  width: 100%;
+  height: 380px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.idea-photo-row .idea-photo .idea-photo-btn img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: contain;
+  background: #f7f8ee;
+}
+.idea-photo-row .idea-photo figcaption { text-align: center; }
+@media (max-width: 760px) {
+  .idea-photo-row { grid-template-columns: 1fr; }
+  .idea-photo-row .idea-photo .idea-photo-btn { height: 300px; }
+}
+
+/* 首页卡片：APP 演示动图（picture 包裹不影响原 img 样式） */
+.cover-shot-single picture { display: block; }
