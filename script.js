@@ -97,26 +97,28 @@
   }
 
   var labTabs = Array.prototype.slice.call(document.querySelectorAll('.lab-tab'));
-  labTabs.forEach(function (tab, index) {
-    tab.addEventListener('click', function () {
-      labTabs.forEach(function (item) {
-        item.classList.remove('active');
-        item.setAttribute('aria-selected', 'false');
+  if (document.getElementById('labScreen') && labTabs.length) {
+    labTabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () {
+        labTabs.forEach(function (item) {
+          item.classList.remove('active');
+          item.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        renderLab(tab.dataset.lab);
       });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-      renderLab(tab.dataset.lab);
+      tab.addEventListener('keydown', function (event) {
+        if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+        event.preventDefault();
+        var direction = event.key === 'ArrowRight' ? 1 : -1;
+        var next = labTabs[(index + direction + labTabs.length) % labTabs.length];
+        next.focus();
+        next.click();
+      });
     });
-    tab.addEventListener('keydown', function (event) {
-      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-      event.preventDefault();
-      var direction = event.key === 'ArrowRight' ? 1 : -1;
-      var next = labTabs[(index + direction + labTabs.length) % labTabs.length];
-      next.focus();
-      next.click();
-    });
-  });
-  renderLab('v1');
+    renderLab('v1');
+  }
 
   var lightbox = document.getElementById('researchLightbox');
   var lightboxImage = document.getElementById('lightboxImage');
@@ -188,7 +190,7 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     revealItems.forEach(function (item) { revealObserver.observe(item); });
 
-    var sectionIds = ['prologue', 'problem', 'pre-research', 'ideation', 'v1', 'v2', 'research', 'v3', 'demo', 'method', 'future', 'summary'];
+    var sectionIds = ['prologue', 'problem', 'pre-research', 'ideation', 'v1', 'v2', 'research', 'v3', 'demo'];
     var sectionObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;

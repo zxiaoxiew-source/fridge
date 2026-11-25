@@ -1367,3 +1367,138 @@ body.presentation .slide-hint { display: block; }
   .slide-hint { display: none !important; }
   .slide-toggle { right: 12px; bottom: 12px; }
 }
+
+/* ===== 内容调整：物料主图 / 痛点一排 / 机会点三卡 / HMW / 选定方案 / 反馈滚动 ===== */
+
+/* 访谈物料：单张用户旅程图，放大清晰饱满 */
+.artifact-feature {
+  margin: 18px auto 0;
+  max-width: 900px;
+}
+.artifact-feature .artifact-btn {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.artifact-feature .artifact-btn img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.artifact-feature figcaption {
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* 痛点汇总：始终一排三列 */
+.pain-grid.pain-summary { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) {
+  .pain-grid.pain-summary { grid-template-columns: 1fr; }
+}
+
+/* 调研机会点：三卡放大 */
+.opportunity-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.opportunity-grid article { padding: 24px 22px; }
+.opportunity-grid span { font-size: 13px; margin-bottom: 12px; }
+.opportunity-grid p { font-size: 16px; line-height: 1.7; }
+@media (max-width: 760px) {
+  .opportunity-grid { grid-template-columns: 1fr; }
+}
+
+/* 重新定义设计问题 */
+.hmw-block {
+  margin-bottom: 56px;
+  padding: 30px 34px;
+  background: var(--deep);
+  border-radius: var(--radius);
+  color: #eef5ef;
+  box-shadow: var(--shadow);
+}
+.hmw-block .eyebrow { color: var(--lime); }
+.hmw-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+.hmw-item {
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: var(--radius-sm);
+  padding: 22px 24px;
+}
+.hmw-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: var(--lime);
+  border: 1px solid rgba(205, 241, 121, .4);
+  border-radius: 999px;
+  padding: 3px 14px;
+  margin-bottom: 12px;
+}
+.hmw-tag-light { background: var(--lime); color: var(--deep); border-color: var(--lime); }
+.hmw-item p { margin: 0; font-size: 15px; line-height: 1.8; color: rgba(238, 245, 239, .88); }
+.hmw-item p b { color: var(--lime); }
+@media (max-width: 760px) {
+  .hmw-row { grid-template-columns: 1fr; }
+  .hmw-block { padding: 24px; }
+}
+
+/* 最终选定方案：第三卡标绿 */
+.plan-card { position: relative; }
+.plan-card-selected {
+  background: var(--lime-soft);
+  border: 1.5px solid rgba(30, 122, 83, .45);
+  box-shadow: 0 14px 34px rgba(30, 122, 83, .16);
+}
+.pick-badge {
+  position: absolute;
+  top: -14px;
+  right: 18px;
+  background: var(--green);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  border-radius: 999px;
+  padding: 5px 14px;
+  box-shadow: 0 8px 18px rgba(30, 122, 83, .3);
+}
+.plan-card-selected h3 { color: var(--deep); }
+.plan-card-selected p { color: var(--ink); }
+.pick-reason {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(30, 122, 83, .35);
+  font-size: 13px !important;
+  line-height: 1.8 !important;
+  color: var(--ink-2) !important;
+}
+.pick-reason b { color: var(--green); }
+
+/* 用户反馈：循环滚动 */
+.feedback-scroll {
+  position: relative;
+  max-height: 560px;
+  overflow: hidden;
+  mask-image: linear-gradient(180deg, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+}
+.feedback-track { animation: feedbackLoop 45s linear infinite; }
+.feedback-scroll:hover .feedback-track { animation-play-state: paused; }
+.feedback-set { display: grid; }
+.feedback-set .quote-card { margin-bottom: 14px; }
+.feedback-set .quote-card:last-child { margin-bottom: 14px; }
+@keyframes feedbackLoop {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+.feedback-fade { position: absolute; left: 0; right: 0; height: 30px; pointer-events: none; }
+.feedback-fade-top { top: 0; background: linear-gradient(180deg, var(--paper-2), transparent); }
+.feedback-fade-bottom { bottom: 0; background: linear-gradient(0deg, var(--paper-2), transparent); }
+.feedback-hint { margin: 10px 0 0; font-size: 12px; color: var(--muted); text-align: center; }
+@media (prefers-reduced-motion: reduce) {
+  .feedback-track { animation: none; }
+  .feedback-scroll { max-height: none; overflow: visible; }
+  .feedback-set[aria-hidden="true"] { display: none; }
+}
