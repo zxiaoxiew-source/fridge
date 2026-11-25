@@ -459,19 +459,44 @@
   var wheelLock = false;
   var touchStartY = null;
 
+  var GAP = 18;
+  var stageH = 0;
+  var cardH = 0;
+
+  function measure() {
+    stageH = stage.clientHeight;
+    cardH = cards.reduce(function (max, card) {
+      return Math.max(max, card.offsetHeight || 0);
+    }, 0) || 170;
+  }
+
   function render() {
+    if (!stageH) measure();
+    // 三张卡竖向罗列：中间完整放大，上下两条缩小并稍微变浅
+    var centerY = Math.max(0, (stageH - cardH) / 2);
     cards.forEach(function (card, index) {
-      // 有符号的循环距离：0 = 当前，正数 = 后面待看，负数 = 前面已看过
+      // 有符号的循环距离：0 = 中间，负数 = 上方，正数 = 下方
       var raw = (index - current + total) % total;
       var offset = raw <= total / 2 ? raw : raw - total;
-      var dist = Math.abs(offset);
-      var scale = 1 - Math.min(dist, 5) * 0.07;
-      var shift = offset * 26;
-      var opacity = offset < 0 ? 0 : (dist > 3 ? 0 : 1);
-      card.style.zIndex = String(total - dist);
-      card.style.transform = 'translateY(' + shift + 'px) scale(' + scale.toFixed(3) + ')';
+      var y = centerY;
+      var scale = 0.72;
+      var opacity = 0;
+      var z = 0;
+      var visible = false;
+      if (offset === 0) {
+        scale = 1; opacity = 1; z = 3; visible = true;
+      } else if (offset === -1) {
+        y = centerY - GAP - cardH * 0.82;
+        scale = 0.82; opacity = 0.45; z = 2; visible = true;
+      } else if (offset === 1) {
+        y = centerY + cardH + GAP;
+        scale = 0.82; opacity = 0.45; z = 2; visible = true;
+      }
+      card.dataset.offset = String(offset);
+      card.style.zIndex = String(z);
+      card.style.transform = 'translateY(' + y.toFixed(1) + 'px) scale(' + scale + ')';
       card.style.opacity = String(opacity);
-      card.style.pointerEvents = offset === 0 ? 'auto' : 'none';
+      card.style.pointerEvents = visible ? 'auto' : 'none';
       card.classList.toggle('is-active', offset === 0);
       card.setAttribute('aria-hidden', offset === 0 ? 'false' : 'true');
     });
@@ -517,6 +542,35 @@
     }
   });
 
+  var dragStartY = null;
+  var dragMoved = false;
+
+  function markDragged() {
+    dragMoved = true;
+    window.setTimeout(function () { dragMoved = false; }, 140);
+  }
+
+  // 点击上/下两条侧卡，直接把它送到中间
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      if (dragMoved) return;
+      var offset = Number(card.dataset.offset);
+      if (offset === -1 || offset === 1) move(offset);
+    });
+  });
+
+  stage.addEventListener('mousedown', function (event) { dragStartY = event.clientY; });
+  stage.addEventListener('mouseup', function (event) {
+    if (dragStartY === null || inPresentation()) return;
+    var delta = dragStartY - event.clientY;
+    dragStartY = null;
+    if (Math.abs(delta) > 40) {
+      markDragged();
+      move(delta > 0 ? 1 : -1);
+    }
+  });
+  stage.addEventListener('mouseleave', function () { dragStartY = null; });
+
   stage.addEventListener('touchstart', function (event) {
     if (inPresentation()) return;
     touchStartY = event.touches[0].clientY;
@@ -525,8 +579,14 @@
     if (inPresentation() || touchStartY === null) return;
     var delta = touchStartY - event.changedTouches[0].clientY;
     touchStartY = null;
-    if (Math.abs(delta) > 40) move(delta > 0 ? 1 : -1);
+    if (Math.abs(delta) > 40) {
+      markDragged();
+      move(delta > 0 ? 1 : -1);
+    }
   }, { passive: true });
+
+  window.addEventListener('resize', function () { measure(); render(); });
+  window.addEventListener('load', function () { measure(); render(); });
 
   render();
 })();

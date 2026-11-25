@@ -41,10 +41,10 @@
           <p class="hero-lead"><b>这个项目是什么？</b>鲜知是一款帮家庭管好冰箱食材的应用：快速录入、临期提醒、菜谱推荐，覆盖手机、iPad 与冰箱大屏。<br />它要回答的第一个问题，是一个更大的社会问题——食物浪费。</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#problem">先看问题在哪 ↓</a>
-            <a class="btn btn-ghost" href="#v1">直接看版本迭代</a>
+            <a class="btn btn-ghost" href="#ending">直接看版本迭代</a>
           </div>
           <div class="hero-meta">
-            <span>3 类权威调研数据</span><span>1 份问卷 + 深度访谈</span><span>10 位可用性测试用户</span><span>5 处核心优化</span><span>3 个版本 · 多端适配</span>
+            <span>3 类权威调研数据</span><span>1 份问卷 + 深度访谈</span><span>7 位可用性测试用户</span><span>5 处核心优化</span><span>3 个版本 · 多端适配</span>
           </div>
         </div>
         <div class="hero-visual reveal reveal-delay">
@@ -301,11 +301,17 @@
             <span>方案 01</span>
             <h3>手机轻量化录入 + AR 识别录入</h3>
             <p>购物现场随手拍照 / AR 识别，几秒完成录入；轻量交互降低录入门槛，让「记一笔」不再靠意志力。</p>
+            <div class="plan-flow" aria-hidden="true"><span>📷</span><i>→</i><span>🧾</span><i>→</i><span>📱</span></div>
+            <p class="plan-flow-caption">拍照识别 → 生成记录 → 信息仍停在手机里</p>
+            <div class="plan-note"><span class="plan-note-icon">📱</span><p><b>未采用</b>　解决了「记得住」，但厨房里看不看得到、全家人看不看得到，仍然没有答案。</p></div>
           </article>
           <article class="plan-card">
             <span>方案 02</span>
             <h3>数据全家共享</h3>
             <p>一位家庭成员录入，全家可查。冰箱里的食材状态成为家庭共享信息，而不是某个人的记忆负担。</p>
+            <div class="plan-flow" aria-hidden="true"><span>👤</span><i>→</i><span>☁️</span><i>→</i><span>👨‍👩‍👧</span></div>
+            <p class="plan-flow-caption">一人录入 → 云端同步 → 全家可查，但仍要打开 App</p>
+            <div class="plan-note"><span class="plan-note-icon">👨‍👩‍👧</span><p><b>未采用</b>　共享是加分项，但仍要有人专门打开 App 去翻记录，做菜场景下依旧不顺手。</p></div>
           </article>
           <article class="plan-card plan-card-selected">
             <span class="pick-badge">✓ 已选定</span>
@@ -344,15 +350,38 @@
               <span>后来发现</span>
               <p>入口散、术语多，用户要先学会这套系统。</p>
             </div>
+            <figure class="story-illust reveal">
+              <div class="story-illust-row">
+                <button type="button" class="artifact-btn" data-caption="小陈女士面对塞满却记不住的冰箱：功能齐全，不等于用户会用">
+                  <img src="./assets/character/xiaochen-p1.png" alt="插画：小陈女士面对冰箱里放坏的食材发愁" loading="lazy" decoding="async" />
+                  <span class="artifact-zoom" aria-hidden="true">＋</span>
+                </button>
+                <button type="button" class="artifact-btn" data-caption="插画：用手机查看临期提醒与「优先吃」标签">
+                  <img src="./assets/character/xiaochen-p2.png" alt="插画：用手机查看鲜知的临期提醒与优先吃标签" loading="lazy" decoding="async" />
+                  <span class="artifact-zoom" aria-hidden="true">＋</span>
+                </button>
+                <button type="button" class="artifact-btn" data-caption="插画：先吃掉快过期的食材，最后端出一餐">
+                  <img src="./assets/character/xiaochen-p3.png" alt="插画：小陈女士端出做好的一餐，冰箱里的食材被及时吃掉" loading="lazy" decoding="async" />
+                  <span class="artifact-zoom" aria-hidden="true">＋</span>
+                </button>
+              </div>
+              <figcaption>小陈女士的三格日常 · 从「记不住」到「有人提醒」，正是 1.0 之后要补上的一课</figcaption>
+            </figure>
           </div>
           <div class="chapter-media reveal reveal-delay">
             <div class="draft-strip">
               <p class="mini-title mini-title-light">初代手绘草稿 · 实拍照片</p>
-              <button type="button" class="artifact-btn shot-photo shot-photo-sketch" data-caption="初代手绘草稿实拍：NFC 碰一碰、临期弹窗与联动购物 APP 的原始草图">
-                <img src="./assets/slides/draft-sketch.jpg" alt="初代手绘草稿实拍：纸上画的冰箱界面、NFC 碰一碰与联动购物 APP 草图" loading="lazy" decoding="async" />
-                <span class="artifact-zoom" aria-hidden="true">＋</span>
-              </button>
-              <p class="shot-caption">初代手绘草稿实拍 · 冰箱界面 / NFC 结果页 / 临期弹窗 / 联动购物 APP</p>
+              <div class="draft-photo-row">
+                <button type="button" class="artifact-btn shot-photo shot-photo-sketch" data-caption="初代手绘草稿实拍（一）：冰箱界面、NFC 碰一碰、临期弹窗与联动购物 APP 的原始草图">
+                  <img src="./assets/slides/draft-sketch.jpg" alt="初代手绘草稿实拍（一）：纸上画的冰箱界面、NFC 碰一碰与联动购物 APP 草图" loading="lazy" decoding="async" />
+                  <span class="artifact-zoom" aria-hidden="true">＋</span>
+                </button>
+                <button type="button" class="artifact-btn shot-photo shot-photo-sketch" data-caption="初代手绘草稿实拍（二）：买菜动线、食材记录字段、临期提醒与浪费统计的原始草图">
+                  <img src="./assets/slides/draft-sketch-2.jpg" alt="初代手绘草稿实拍（二）：买菜动线、食材记录、APP 分类想法、临期提醒与浪费统计草图" loading="lazy" decoding="async" />
+                  <span class="artifact-zoom" aria-hidden="true">＋</span>
+                </button>
+              </div>
+              <p class="shot-caption">初代手绘草稿实拍（两张并排）· 冰箱界面 / NFC / 临期提醒 / 购物 APP / 浪费统计</p>
             </div>
             <button type="button" class="artifact-btn shot-photo shot-photo-v1" data-caption="1.0 首页实拍：临期提醒天数筛选与四层分区总览">
               <img src="./assets/draft/v1-home.png" alt="1.0 首页原型截图：临期提醒、天数筛选、四层分区总览与底部导航" loading="lazy" decoding="async" />
@@ -422,7 +451,7 @@
             <span class="artifact-zoom" aria-hidden="true">＋</span>
           </button>
           <div class="research-meta">
-            <div><b>10 位</b><span>可用性测试用户</span></div>
+            <div><b>7位</b><span>可用性测试用户</span></div>
             <div><b>4 项</b><span>任务式观察</span></div>
             <div><b>3 类</b><span>共性痛点</span></div>
           </div>
@@ -435,66 +464,51 @@
           </div>
         </div>
         <div class="research-right reveal reveal-delay">
-          <p class="mini-title">可用性测试 · 用户反馈汇总（10 位用户，逐条编号）</p>
+          <p class="mini-title">可用性测试 · 用户反馈汇总（7位用户，逐条编号）</p>
           <div class="feedback-carousel" aria-label="用户反馈，滚轮切换，循环浏览">
             <div class="feedback-stage" id="feedbackStage" tabindex="0">
-                <article class="feedback-card quote-card quote-a" data-i="0">
-                  <span class="quote-index">反馈 1</span>
-                  <p>“那个‘2 急’我愣了一下，没反应过来啥意思。”</p>
-                  <small>→ 内部黑话，理解成本高</small>
-                </article>
-                <article class="feedback-card quote-card quote-b" data-i="1">
-                  <span class="quote-index">反馈 2</span>
-                  <p>“更换冰箱型号我找了很久，以为只是一行说明。”</p>
-                  <small>→ 可交互入口缺少意符</small>
-                </article>
-                <article class="feedback-card quote-card quote-c" data-i="2">
-                  <span class="quote-index">反馈 3</span>
-                  <p>“看到 8 件快到期，但不知道到底有多急。”</p>
-                  <small>→ 有信息，没有优先级</small>
-                </article>
-                <article class="feedback-card quote-card quote-a" data-i="3">
-                  <span class="quote-index">反馈 4</span>
-                  <p>“添加食材要点好几下，我更习惯直接拍张照。”</p>
+                <article class="feedback-card quote-card" data-i="0">
+                  <span class="quote-index">反馈 1 · 用户 1 小黄</span>
+                  <p>“添加食材觉得麻烦，会犹豫有没有必要。”</p>
                   <small>→ 录入流程要更轻量</small>
                 </article>
-                <article class="feedback-card quote-card quote-b" data-i="4">
-                  <span class="quote-index">反馈 5</span>
-                  <p>“我家冰箱和我妈家的不一样，分区对不上。”</p>
-                  <small>→ 分区需要按冰箱型号适配</small>
+                <article class="feedback-card quote-card" data-i="1">
+                  <span class="quote-index">反馈 2 · 用户 2 小何</span>
+                  <p>“第一次用信息太多，愣住，找不到添加。”</p>
+                  <small>→ 新用户缺少上手引导</small>
                 </article>
-                <article class="feedback-card quote-card quote-c" data-i="5">
-                  <span class="quote-index">反馈 6</span>
-                  <p>“能直接告诉我先吃哪个就好了，不用我自己挑。”</p>
-                  <small>→ 缺少行动引导</small>
+                <article class="feedback-card quote-card" data-i="2">
+                  <span class="quote-index">反馈 3 · 用户 3 小陈</span>
+                  <p>“靠「急」字点进去，才看到临期。”</p>
+                  <small>→ 内部黑话，理解成本高</small>
                 </article>
-                <article class="feedback-card quote-card quote-a" data-i="6">
-                  <span class="quote-index">反馈 7</span>
-                  <p>“食谱看着不错，但不知道用的是不是快过期的那几样。”</p>
-                  <small>→ 菜谱要与临期食材关联</small>
+                <article class="feedback-card quote-card" data-i="3">
+                  <span class="quote-index">反馈 4 · 用户 4 小小</span>
+                  <p>“手动记录很麻烦：要选种类、天数、份数。”</p>
+                  <small>→ 录入步骤太重</small>
                 </article>
-                <article class="feedback-card quote-card quote-b" data-i="7">
-                  <span class="quote-index">反馈 8</span>
-                  <p>“字有点多，我只想先看今天要注意什么。”</p>
-                  <small>→ 顶部信息要轻量化</small>
+                <article class="feedback-card quote-card" data-i="4">
+                  <span class="quote-index">反馈 5 · 用户 5 小张</span>
+                  <p>“更换冰箱型号找了很久，以为只是一行说明。”</p>
+                  <small>→ 可交互入口缺少意符</small>
                 </article>
-                <article class="feedback-card quote-card quote-c" data-i="8">
-                  <span class="quote-index">反馈 9</span>
-                  <p>“补货清单加了一堆，冰箱里其实还有，重复买了。”</p>
-                  <small>→ 库存与补货要打通</small>
+                <article class="feedback-card quote-card" data-i="5">
+                  <span class="quote-index">反馈 6 · 用户 6 小万</span>
+                  <p>“标红临期能快速知道哪些不能保存，希望快过期时弹消息提醒。”</p>
+                  <small>→ 需要主动、分级的提醒</small>
                 </article>
-                <article class="feedback-card quote-card quote-a" data-i="9">
-                  <span class="quote-index">反馈 10</span>
-                  <p>“界面挺舒服的，但功能都藏得比较深。”</p>
+                <article class="feedback-card quote-card" data-i="6">
+                  <span class="quote-index">反馈 7 · 用户 7 小胡</span>
+                  <p>“刚上来不熟悉，不知道该往哪里点。”</p>
                   <small>→ 入口意符不够明显</small>
                 </article>
             </div>
             <div class="feedback-ui">
               <button type="button" class="feedback-prev" aria-label="上一条反馈">‹</button>
-              <span class="feedback-count" id="feedbackCount">01 / 10</span>
+              <span class="feedback-count" id="feedbackCount">01 / 07</span>
               <button type="button" class="feedback-next" aria-label="下一条反馈">›</button>
             </div>
-            <p class="feedback-hint">滚轮 / 箭头 / 拖动切换 · 循环浏览 · 当前卡片放大显示</p>
+            <p class="feedback-hint">滚轮 / 箭头 / 拖动切换 · 循环浏览</p>
           </div>
 
         </div>
@@ -552,9 +566,9 @@
             <div class="fix-head"><span class="fix-no">02</span><div><h3>冰箱切换入口显性化</h3><p>让能点的地方，看起来真的能点</p></div><span class="fix-principle">反馈与可供性 · 意符</span></div>
             <div class="fix-chain"><span>旧版问题</span><b>入口无意符，功能发现率极低</b><span>用户反馈</span><b>“更换冰箱型号我找了很久，以为只是一行说明”</b><span>3.0 方案</span><b>切换入口显性化</b></div>
             <div class="compare">
-              <div class="compare-side before"><small>2.0 · 改前</small><div class="mock-label muted-label">🧊 常规双门 · 5 分区 <i>更换 / 拍照识别 ›</i></div><button type="button" class="artifact-btn shot-photo shot-photo-compare" data-caption="2.0 型号切换仅一行状态文字"><img src="./assets/slides/switch-v2.jpg" alt="2.0 冰箱切换模块" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button></div>
+              <div class="compare-side before"><small>2.0 · 改前</small><div class="mock-label muted-label">🧊 常规双门 · 5 分区 <i>更换 / 拍照识别 ›</i></div><button type="button" class="artifact-btn shot-photo shot-photo-compare shot-photo-fit fit-lower" data-caption="2.0 型号切换仅一行状态文字"><img src="./assets/slides/switch-v2.jpg" alt="2.0 冰箱切换模块" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button></div>
               <div class="compare-arrow" aria-hidden="true">→</div>
-              <div class="compare-side after"><small>3.0 · 改后</small><div class="mock-label good">切换冰箱类型　/　拍照识别</div><button type="button" class="artifact-btn shot-photo shot-photo-compare" data-caption="3.0 可操作入口显性化"><img src="./assets/slides/switch-v3.jpg" alt="3.0 冰箱切换模块" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button></div>
+              <div class="compare-side after"><small>3.0 · 改后</small><div class="mock-label good">切换冰箱类型　/　拍照识别</div><button type="button" class="artifact-btn shot-photo shot-photo-compare shot-photo-fit fit-lower" data-caption="3.0 可操作入口显性化"><img src="./assets/slides/switch-v3.jpg" alt="3.0 冰箱切换模块" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button></div>
             </div>
             <p class="fix-value"><b>优化价值</b>　功能发现率显著提升，核心价值被用户感知到。</p>
           </article>
@@ -563,9 +577,9 @@
             <div class="fix-head"><span class="fix-no">03</span><div><h3>临期预警分级可视化</h3><p>别让用户自己数、自己算</p></div><span class="fix-principle">格式塔分组 + 认知负荷</span></div>
             <div class="fix-chain"><span>旧版问题</span><b>信息平铺无优先级，认知负担重</b><span>用户反馈</span><b>“看到 8 件快到期，但不知道到底有多急”</b><span>3.0 方案</span><b>临期分级可视化</b></div>
             <div class="compare">
-              <div class="compare-side before"><small>2.0 · 改前</small><div class="mock-label muted-label">快到期食材列表 · 8 件</div><button type="button" class="artifact-btn shot-photo shot-photo-compare" data-caption="2.0 临期信息平铺无优先级"><img src="./assets/slides/tier-v2.jpg" alt="2.0 临期纯列表" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button></div>
+              <div class="compare-side before"><small>2.0 · 改前</small><div class="mock-label muted-label">快到期食材列表 · 8 件</div><button type="button" class="artifact-btn shot-photo shot-photo-compare shot-photo-fit" data-caption="2.0 临期信息平铺无优先级"><img src="./assets/slides/tier-v2.jpg" alt="2.0 临期纯列表" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button></div>
               <div class="compare-arrow" aria-hidden="true">→</div>
-              <div class="compare-side after"><small>3.0 · 改后</small><div class="tier-row"><em>已过期</em><em>1天内</em><em>2天内</em><em>3天内</em></div><button type="button" class="artifact-btn shot-photo shot-photo-compare" data-caption="3.0 临期分级与优先吃引导"><img src="./assets/slides/v3-alert.jpg" alt="3.0 分级列表" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button></div>
+              <div class="compare-side after"><small>3.0 · 改后</small><div class="tier-row"><em>已过期</em><em>1天内</em><em>2天内</em><em>3天内</em></div><button type="button" class="artifact-btn shot-photo shot-photo-compare shot-photo-fit fit-mid" data-caption="3.0 临期分级与优先吃引导"><img src="./assets/slides/v3-alert.jpg" alt="3.0 分级列表" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button></div>
             </div>
             <p class="fix-value"><b>优化价值</b>　1 秒识别最高风险，决策效率直接翻倍。</p>
           </article>
@@ -585,9 +599,9 @@
             <div class="fix-head"><span class="fix-no">05</span><div><h3>临期提醒动作指令化</h3><p>从「提醒你」变成「告诉你怎么做」</p></div><span class="fix-principle">系统状态可见 + 行动导向</span></div>
             <div class="fix-chain"><span>旧版问题</span><b>只告知状态，无法转化为实际行为</b><span>用户反馈</span><b>“知道快过期，但还是想不起来先吃哪个”</b><span>3.0 方案</span><b>提醒动作指令化</b></div>
             <div class="compare">
-              <div class="compare-side before"><small>2.0 · 改前</small><div class="mock-label muted-label">原味酸奶 · 还剩 1 天</div><button type="button" class="artifact-btn shot-photo shot-photo-compare" data-caption="2.0 只告知剩余天数"><img src="./assets/slides/v2-home.jpg" alt="2.0 食材条目" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button></div>
+              <div class="compare-side before"><small>2.0 · 改前</small><div class="mock-label muted-label">原味酸奶 · 还剩 1 天</div><button type="button" class="artifact-btn shot-photo shot-photo-compare shot-photo-fit" data-caption="2.0 只告知剩余天数"><img src="./assets/slides/v2-home.jpg" alt="2.0 食材条目" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button></div>
               <div class="compare-arrow" aria-hidden="true">→</div>
-              <div class="compare-side after"><small>3.0 · 改后</small><div class="mock-label good">原味酸奶 · 还剩 1 天 <em class="priority-pill">⏰ 优先吃</em></div><button type="button" class="artifact-btn shot-photo shot-photo-compare" data-caption="3.0 增加「优先吃」行动标签"><img src="./assets/slides/v3-home.jpg" alt="3.0 食材条目" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button></div>
+              <div class="compare-side after"><small>3.0 · 改后</small><div class="mock-label good">原味酸奶 · 还剩 1 天 <em class="priority-pill">⏰ 优先吃</em></div><button type="button" class="artifact-btn shot-photo shot-photo-compare shot-photo-fit" data-caption="3.0 增加「优先吃」行动标签"><img src="./assets/slides/v3-home.jpg" alt="3.0 食材条目" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button></div>
             </div>
             <p class="fix-value"><b>优化价值</b>　真正减少浪费：不是多一条提醒，而是多一个明确动作。</p>
           </article>
@@ -603,21 +617,32 @@
         <p class="section-lead">五处优化是看得见的刀口；看不见的，是新用户从打开到上手的整条路径。</p>
       </div>
       <div class="experience-grid">
-        <article class="exp-card reveal"><span class="exp-icon">▷</span><h3>品牌开场动画</h3><p>冰箱门打开，食材浮现：「鲜知 · 管好冰箱，减少浪费」。</p></article>
-        <article class="exp-card reveal reveal-delay"><span class="exp-icon">🧭</span><h3>8 步实操教程</h3><p>欢迎 → 添加食材 → 看临期 → 按位置找 → 匹配冰箱 → 看食谱 → 加补货 → 探索完成。</p></article>
-        <article class="exp-card reveal reveal-delay-2"><span class="exp-icon">⏰</span><h3>每日临期提醒</h3><p>不再等用户想起来；每天主动列出最该先吃的 3 样食材。</p></article>
-        <article class="exp-card reveal"><span class="exp-icon">▦</span><h3>首页模块切换</h3><p>「⏰ 临期 / 🧊 分区」两个模块，把首页从信息流改成选择台。</p></article>
-        <article class="exp-card reveal reveal-delay"><span class="exp-icon">✓</span><h3>入库即时反馈</h3><p>添加后提示「已放入 XX」并给出「查看」入口，操作结果看得见。</p></article>
-        <article class="exp-card reveal reveal-delay-2"><span class="exp-icon">▶</span><h3>食谱视频教程</h3><p>菜谱详情附视频卡片，点击前往哔哩哔哩观看完整做法。</p></article>
+        <article class="exp-card reveal">
+          <div class="exp-copy"><span class="exp-icon">▷</span><h3>品牌开场动画</h3><p>冰箱门打开，食材浮现：「鲜知 · 管好冰箱，减少浪费」。</p></div>
+          <button type="button" class="artifact-btn shot-photo shot-photo-exp" data-caption="3.0 品牌开场动画：冰箱门打开，食材浮现"><img src="./assets/slides/tutorial-1.jpg" alt="3.0 品牌开场动画：鲜知 logo 与食材浮现" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button>
+        </article>
+        <article class="exp-card reveal reveal-delay">
+          <div class="exp-copy"><span class="exp-icon">🧭</span><h3>8 步实操教程</h3><p>欢迎 → 添加食材 → 看临期 → 按位置找 → 匹配冰箱 → 看食谱 → 加补货 → 探索完成。</p></div>
+          <button type="button" class="artifact-btn shot-photo shot-photo-exp" data-caption="3.0 新手教程：欢迎与功能总览"><img src="./assets/slides/tutorial-2.jpg" alt="3.0 教程欢迎页：功能总览与下一步引导" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button>
+        </article>
+        <article class="exp-card reveal reveal-delay-2">
+          <div class="exp-copy"><span class="exp-icon">⏰</span><h3>每日临期提醒</h3><p>不再等用户想起来；每天主动列出最该先吃的 3 样食材。</p></div>
+          <button type="button" class="artifact-btn shot-photo shot-photo-exp" data-caption="3.0 教程：先看临期提醒，按紧急程度查看"><img src="./assets/slides/tutorial-3.jpg" alt="3.0 教程：这些食材快到期了，先看临期提醒" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button>
+        </article>
+        <article class="exp-card reveal">
+          <div class="exp-copy"><span class="exp-icon">▦</span><h3>首页模块切换</h3><p>「⏰ 临期 / 🧊 分区」两个模块，把首页从信息流改成选择台。</p></div>
+          <button type="button" class="artifact-btn shot-photo shot-photo-exp" data-caption="3.0 教程：按位置找食材，冷藏 / 冷冻分区一目了然"><img src="./assets/slides/tutorial-4.jpg" alt="3.0 教程：按位置找食材与冰箱分区总览" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button>
+        </article>
+        <article class="exp-card reveal reveal-delay">
+          <div class="exp-copy"><span class="exp-icon">✓</span><h3>入库即时反馈</h3><p>添加后提示「已放入 XX」并给出「查看」入口，操作结果看得见。</p></div>
+          <button type="button" class="artifact-btn shot-photo shot-photo-exp" data-caption="3.0 入库即时反馈：添加成功并提示已放入分区"><img src="./assets/slides/exp-toast.jpg" alt="3.0 添加食材成功后的即时反馈提示与分区列表" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button>
+        </article>
+        <article class="exp-card reveal reveal-delay-2">
+          <div class="exp-copy"><span class="exp-icon">▶</span><h3>食谱视频教程</h3><p>菜谱详情附视频卡片，点击前往哔哩哔哩观看完整做法。</p></div>
+          <button type="button" class="artifact-btn shot-photo shot-photo-exp" data-caption="3.0 菜谱详情：所需食材、分步做法与视频教程卡片"><img src="./assets/slides/exp-recipe-video.jpg" alt="3.0 菜谱详情：所需食材、做法与视频教程卡片" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button>
+        </article>
       </div>
-      <div class="tutorial-grid reveal">
-        <figure><button type="button" class="artifact-btn shot-photo shot-photo-tutorial" data-caption="3.0 品牌开场动画：冰箱门打开，食材浮现"><img src="./assets/slides/tutorial-1.jpg" alt="3.0 品牌开场动画" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button><figcaption>01 开场动画</figcaption></figure>
-        <figure><button type="button" class="artifact-btn shot-photo shot-photo-tutorial" data-caption="3.0 教程：欢迎与功能总览"><img src="./assets/slides/tutorial-2.jpg" alt="3.0 教程欢迎页" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button><figcaption>02 欢迎引导</figcaption></figure>
-        <figure><button type="button" class="artifact-btn shot-photo shot-photo-tutorial" data-caption="3.0 教程：添加食材指引"><img src="./assets/slides/tutorial-3.jpg" alt="3.0 教程添加食材指引" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button><figcaption>03 添加食材</figcaption></figure>
-        <figure><button type="button" class="artifact-btn shot-photo shot-photo-tutorial" data-caption="3.0 教程：查看临期与按位置查找"><img src="./assets/slides/tutorial-4.jpg" alt="3.0 教程临期与分区指引" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button><figcaption>04 临期 / 分区</figcaption></figure>
-        <figure><button type="button" class="artifact-btn shot-photo shot-photo-tutorial" data-caption="3.0 教程：匹配冰箱与查看食谱"><img src="./assets/slides/tutorial-5.jpg" alt="3.0 教程冰箱匹配与食谱" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button><figcaption>05 匹配 / 食谱</figcaption></figure>
-        <figure><button type="button" class="artifact-btn shot-photo shot-photo-tutorial" data-caption="3.0 教程：补货与探索完成"><img src="./assets/slides/tutorial-6.jpg" alt="3.0 教程补货与完成" loading="lazy" decoding="async" /><span class="artifact-zoom" aria-hidden="true">＋</span></button><figcaption>06 补货 / 完成</figcaption></figure>
-      </div>
+      <p class="experience-footnote reveal">右侧为对应优化点的实机截图 · 点击可放大查看</p>
     </section>
 
     <!-- 演示录屏 & 多端分工 -->
@@ -633,33 +658,39 @@
           <span class="device-icon">📱</span>
           <h3>手机 · 负责录入</h3>
           <p>购物现场、拆包装时随手拍照 / AR 识别，几秒录入。录入发生在「手上忙」的场景，所以必须轻量化、单手可完成。</p>
-        </article>
-        <article class="device-card">
-          <span class="device-icon">💻</span>
-          <h3>iPad · 负责看菜谱</h3>
-          <p>做菜时人在厨房、离屏幕远、手上沾水——大屏字大、画面大，远距离一眼看清步骤，边做边看。</p>
+          <p class="device-note">随手一笔 · 3 秒完成</p>
         </article>
         <article class="device-card">
           <span class="device-icon">🧊</span>
           <h3>冰箱端 · 家庭入口</h3>
           <p>冰箱大屏天然位于厨房中心：开门即见临期提醒与库存面板，全家路过都能看到，数据全家共享。</p>
+          <p class="device-note">开门即见 · 全家共享</p>
+        </article>
+        <article class="device-card device-card-ipad">
+          <div class="device-ipad-copy">
+            <span class="device-icon">💻</span>
+            <h3>iPad · 负责看菜谱</h3>
+            <p>做菜时人在厨房、离屏幕远、手上沾水——大屏字大、画面大，远距离一眼看清步骤，边做边看。下面是我们真实的 iPad 端（智能冰箱显示屏）动态展示：从临期提醒、食材清单，一路看到今日食谱与菜谱详情。</p>
+            <p class="device-note">实机录屏 · 临期提醒 → 食材清单 → 今日食谱 → 菜谱详情</p>
+            <a class="text-link" href="https://tartalr818339.github.io/fridge-screen/" target="_blank" rel="noopener noreferrer">打开 iPad 端原型 ↗</a>
+          </div>
+          <figure class="device-ipad-media">
+            <video class="demo-video demo-video-ipad" src="./assets/demo/demo-ipad-screen.mp4" poster="./assets/demo/demo-ipad-screen.jpg"
+                   controls autoplay muted loop playsinline preload="metadata"
+                   aria-label="iPad 端动态展示：温馨临期提醒、食材分区清单、今日食谱与菜谱详情弹窗的真实原型录屏"></video>
+            <figcaption>iPad 端动态展示 · 鲜知智能冰箱显示屏（真实原型录屏）</figcaption>
+          </figure>
         </article>
       </div>
 
       <div class="demo-videos reveal">
-        <p class="mini-title">操作演示录屏 · 嵌入网页直观展示流程</p>
+        <p class="mini-title">手机端 / 大屏端操作演示录屏 · 嵌入网页直观展示流程</p>
         <div class="video-grid">
           <figure class="video-slot">
             <video class="demo-video" src="./assets/demo/demo-add-food.mp4" poster="./assets/demo/demo-add-food.jpg"
                    controls autoplay muted loop playsinline preload="metadata"
                    aria-label="手机端录入食材操作演示录屏：打开添加弹窗、切换拍照与一句话、手动填写并确认添加"></video>
             <figcaption>手机端：录入食材（拍照 / AR 识别 / 手动 / 一句话）</figcaption>
-          </figure>
-          <figure class="video-slot">
-            <video class="demo-video" src="./assets/demo/demo-ipad-alert.mp4" poster="./assets/demo/demo-ipad-alert.jpg"
-                   controls autoplay muted loop playsinline preload="metadata"
-                   aria-label="iPad 端临期提醒动态展示：快到期食材清单、分级预警与优先吃引导"></video>
-            <figcaption>iPad 端：临期提醒动态展示</figcaption>
           </figure>
           <figure class="video-slot">
             <video class="demo-video" src="./assets/demo/demo-recipe-bilibili.mp4" poster="./assets/demo/demo-recipe-bilibili.jpg"
@@ -672,7 +703,7 @@
     </section>
 
     <!-- 尾声 -->
-    <section class="ending">
+    <section class="ending" id="ending">
       <div class="ending-inner reveal">
         <p class="eyebrow">THE END / ALSO THE BEGINNING</p>
         <h2>好的迭代，不是把界面换得更漂亮，<br />而是把用户的话，<span class="underline">翻译成界面能回答的问题。</span></h2>

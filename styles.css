@@ -1712,3 +1712,178 @@ body.presentation .slide-hint { display: block; }
 @media (max-width: 640px) {
   .demo-video { height: 430px; }
 }
+
+/* ===== 本轮：字体 / 七条反馈 / 图片自适应 / 六处优化配图 / iPad 实机 / 封面 ===== */
+
+/* 1+9. 「当时我们以为 / 后来发现」放大、与上方基础功能拉开间距 */
+.thought-note {
+  margin-top: 24px;
+  padding: 22px 24px;
+  gap: 10px 14px;
+  font-size: 16px;
+}
+.thought-note > span:not(.note-divider) { font-size: 15px; letter-spacing: .06em; }
+.thought-note p { font-size: 18px; font-weight: 700; line-height: 1.6; color: #fff; }
+.note-divider { margin: 10px 0; }
+
+/* 9. 左栏插画：三格原创角色插画，补齐与右栏的高度差 */
+.story-illust { margin: 26px 0 0; }
+.story-illust-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.story-illust-row .artifact-btn {
+  height: 150px;
+  border: 1px solid rgba(205, 241, 121, .28);
+  border-radius: 12px;
+  background: #fffdf7;
+}
+.story-illust-row .artifact-btn img { height: 100%; object-fit: cover; }
+.story-illust-row .artifact-zoom { right: 6px; bottom: 6px; width: 24px; height: 24px; font-size: 16px; }
+.story-illust figcaption {
+  margin-top: 10px;
+  font-size: 11px;
+  line-height: 1.7;
+  text-align: center;
+  color: rgba(255, 255, 255, .62);
+}
+
+/* 10. 两张手绘草稿并排 */
+.draft-photo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.draft-photo-row .shot-photo-sketch { height: 215px; }
+/* 右栏整体抬高，与左栏（含插画）等高收尾 */
+.shot-photo-v1 { height: 570px; }
+@media (max-width: 960px) {
+  .shot-photo-v1 { height: 420px; }
+}
+@media (max-width: 640px) {
+  .draft-photo-row { grid-template-columns: 1fr; }
+  .draft-photo-row .shot-photo-sketch { height: 220px; }
+  .shot-photo-v1 { height: 350px; }
+}
+
+/* 8. FINAL PICK：徽章字白、方案 01/02 补说明 */
+.pick-badge { color: #fff !important; }
+.plan-card { display: flex; flex-direction: column; }
+.plan-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px dashed rgba(30, 122, 83, .25);
+  border-radius: 14px;
+  background: #f3f8f0;
+}
+.plan-flow span { font-size: 23px; line-height: 1; }
+.plan-flow i { font-style: normal; font-weight: 900; color: var(--green-2); }
+.plan-flow-caption { margin: 9px 0 0 !important; font-size: 11px !important; text-align: center; color: var(--muted) !important; }
+.plan-note {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+}
+.plan-note-icon { font-size: 22px; line-height: 1.2; }
+.plan-note p { margin: 0; font-size: 12.5px; line-height: 1.75; color: var(--muted); }
+.plan-note b { color: var(--green-2); }
+
+/* 2. 七条反馈：三条竖向罗列，中间最大、上下较小且变浅 */
+.feedback-stage { height: 500px; }
+.feedback-card { min-height: 0; cursor: pointer; }
+.feedback-ui { margin-top: 20px; }
+.feedback-carousel .feedback-hint { margin-top: 10px; }
+@media (max-width: 640px) {
+  .feedback-stage { height: 440px; }
+}
+
+/* 3. 3.0 的 02/03/05：图框贴合内容、图片放大且清晰 */
+.shot-photo-fit { height: 430px; }
+.shot-photo-fit img { object-fit: cover; object-position: center 30%; }
+.shot-photo-fit.fit-lower img { object-position: center 62%; }
+.shot-photo-fit.fit-mid img { object-position: center 50%; }
+@media (max-width: 640px) {
+  .shot-photo-fit { height: 340px; }
+}
+
+/* 4. 六处优化：截图放到方框右侧 */
+.exp-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 92px;
+  gap: 14px;
+  align-items: center;
+}
+.exp-card p { line-height: 1.75; }
+.shot-photo-exp { width: 92px; height: 196px; border-radius: 12px; }
+.shot-photo-exp img { object-fit: cover; object-position: center top; }
+.shot-photo-exp .artifact-zoom { right: 5px; bottom: 5px; width: 24px; height: 24px; font-size: 16px; }
+.experience-footnote { margin: 16px 0 0; font-size: 12px; color: var(--muted); text-align: center; }
+@media (max-width: 960px) {
+  .experience-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .experience-grid { grid-template-columns: 1fr; }
+  .exp-card { grid-template-columns: minmax(0, 1fr) 78px; }
+  .shot-photo-exp { width: 78px; height: 168px; }
+}
+
+/* 6. iPad · 负责看菜谱：整行展示真实 iPad 端录屏 */
+.device-roles { grid-template-columns: repeat(2, 1fr); }
+.device-card { display: flex; flex-direction: column; }
+.device-note {
+  margin-top: auto !important;
+  padding-top: 14px;
+  font-size: 12px !important;
+  font-weight: 800;
+  color: var(--green) !important;
+  letter-spacing: .04em;
+}
+.device-card-ipad {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 28px;
+  align-items: center;
+  background: linear-gradient(120deg, #f2f9ec, #fffdf7);
+  border-color: rgba(30, 122, 83, .32);
+}
+.device-card-ipad .device-note { margin-top: 14px !important; }
+.device-card-ipad .text-link { display: inline-block; margin-top: 14px; }
+.device-ipad-media { margin: 0; min-width: 0; }
+.device-ipad-media figcaption { margin-top: 10px; font-size: 12px; text-align: center; color: var(--muted); }
+.demo-video-ipad { aspect-ratio: 1180 / 820; object-fit: contain; border-radius: 16px; }
+.video-grid { grid-template-columns: repeat(2, 1fr); justify-items: center; }
+.video-slot { width: min(100%, 380px); }
+@media (max-width: 960px) {
+  .device-roles, .video-grid { grid-template-columns: 1fr; }
+  .device-card-ipad { grid-column: auto; grid-template-columns: 1fr; }
+}
+
+/* 7. 封面：手机画面更大、绿色方框更矮，字随之收紧 */
+.cover-card { padding: 22px; }
+.cover-title { margin: 12px 0 8px; }
+.cover-title span { font-size: clamp(26px, 2.6vw, 34px); }
+.cover-title small { margin-top: 8px; font-size: 11px; letter-spacing: .22em; }
+.cover-foot { margin-top: 12px; font-size: 10px; }
+.version-collage-single { height: 470px; margin-bottom: 30px; }
+.cover-shot-single img {
+  width: 330px;
+  height: 448px;
+  object-fit: cover;
+  object-position: center 46%;
+}
+.cover-shot-single .cover-shot-label { bottom: -32px; }
+.version-collage-single::before { left: 30%; right: 30%; bottom: 4px; }
+@media (max-width: 960px) {
+  .version-collage-single { height: 360px; }
+  .cover-shot-single img { width: 240px; height: 320px; }
+}
+@media (max-width: 640px) {
+  .cover-card { padding: 18px; }
+  .version-collage-single { height: 330px; }
+  .cover-shot-single img { width: 200px; height: 300px; }
+}
+
+/* 懒加载图片预留比例：避免滚动时布局跳动导致锚点落点偏移 */
+.character-illustration .artifact-btn img { aspect-ratio: 1080 / 360; }
+.artifact-feature .artifact-btn img { aspect-ratio: 1080 / 1065; }
