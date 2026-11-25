@@ -443,3 +443,90 @@
     }
   });
 })();
+
+// ===== 用户反馈：手动滚轮循环卡片（近大远小） =====
+(function () {
+  'use strict';
+
+  var stage = document.getElementById('feedbackStage');
+  if (!stage) return;
+  var cards = Array.prototype.slice.call(stage.querySelectorAll('.feedback-card'));
+  var counter = document.getElementById('feedbackCount');
+  var total = cards.length;
+  if (!total) return;
+
+  var current = 0;
+  var wheelLock = false;
+  var touchStartY = null;
+
+  function render() {
+    cards.forEach(function (card, index) {
+      // 有符号的循环距离：0 = 当前，正数 = 后面待看，负数 = 前面已看过
+      var raw = (index - current + total) % total;
+      var offset = raw <= total / 2 ? raw : raw - total;
+      var dist = Math.abs(offset);
+      var scale = 1 - Math.min(dist, 5) * 0.07;
+      var shift = offset * 26;
+      var opacity = offset < 0 ? 0 : (dist > 3 ? 0 : 1);
+      card.style.zIndex = String(total - dist);
+      card.style.transform = 'translateY(' + shift + 'px) scale(' + scale.toFixed(3) + ')';
+      card.style.opacity = String(opacity);
+      card.style.pointerEvents = offset === 0 ? 'auto' : 'none';
+      card.classList.toggle('is-active', offset === 0);
+      card.setAttribute('aria-hidden', offset === 0 ? 'false' : 'true');
+    });
+    if (counter) {
+      counter.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    }
+  }
+
+  function move(delta) {
+    current = (current + delta + total) % total;
+    render();
+  }
+
+  // 演示模式下让位给全局翻页逻辑，避免滚轮 / 按键被卡片拦截
+  function inPresentation() {
+    return document.body.classList.contains('presentation');
+  }
+
+  stage.addEventListener('wheel', function (event) {
+    if (inPresentation() || wheelLock) return;
+    event.preventDefault();
+    event.stopPropagation();
+    wheelLock = true;
+    window.setTimeout(function () { wheelLock = false; }, 420);
+    move(event.deltaY > 0 ? 1 : -1);
+  }, { passive: false });
+
+  var prev = document.querySelector('.feedback-prev');
+  var next = document.querySelector('.feedback-next');
+  if (prev) prev.addEventListener('click', function () { move(-1); });
+  if (next) next.addEventListener('click', function () { move(1); });
+
+  stage.addEventListener('keydown', function (event) {
+    if (inPresentation()) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      event.stopPropagation();
+      move(1);
+    } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+      event.preventDefault();
+      event.stopPropagation();
+      move(-1);
+    }
+  });
+
+  stage.addEventListener('touchstart', function (event) {
+    if (inPresentation()) return;
+    touchStartY = event.touches[0].clientY;
+  }, { passive: true });
+  stage.addEventListener('touchend', function (event) {
+    if (inPresentation() || touchStartY === null) return;
+    var delta = touchStartY - event.changedTouches[0].clientY;
+    touchStartY = null;
+    if (Math.abs(delta) > 40) move(delta > 0 ? 1 : -1);
+  }, { passive: true });
+
+  render();
+})();
