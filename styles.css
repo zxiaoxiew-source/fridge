@@ -785,6 +785,8 @@ tr:last-child td { border-bottom: 0; }
   line-height: 1;
 }
 .artifact-card figcaption { margin-top: 9px; font-size: 12px; font-weight: 700; color: var(--muted); }
+.artifact-btn-dark { background: #111; }
+.artifact-btn-dark img { height: 320px; background: #111; }
 .opportunity-strip { margin-top: 26px; padding: 30px; border-radius: 24px; background: var(--deep); color: #fff; }
 .opportunity-strip .eyebrow { color: var(--lime); }
 .opportunity-strip h3 { margin-bottom: 20px; font-size: 26px; }
@@ -889,4 +891,357 @@ tr:last-child td { border-bottom: 0; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* ===== 新增板块样式：问题数据 / 问卷 / 创意方案 / 演示 / 总结 ===== */
+
+/* 社会问题数据 */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.data-card {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+.data-card b {
+  display: block;
+  font-size: 26px;
+  color: var(--green);
+  margin-bottom: 8px;
+  letter-spacing: .5px;
+}
+.data-card p { margin: 0 0 10px; font-size: 14px; color: var(--ink-2); }
+.data-card small { display: block; font-size: 12px; color: var(--muted); line-height: 1.5; }
+.data-card-home { background: var(--lime-soft); border-color: rgba(30, 122, 83, .3); }
+.data-card-home b { color: var(--deep); }
+.illustration-strip { margin: 26px 0 10px; }
+
+/* 原创角色插画 · 小陈女士（三联横图） */
+.character-illustration { margin: 0; }
+.character-illustration .artifact-btn {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: var(--paper-2);
+}
+.character-illustration .artifact-btn img {
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  border-radius: var(--radius);
+  background: var(--paper-2);
+}
+.character-illustration figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* 问卷调研 */
+.survey-block {
+  margin-top: 46px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 34px;
+  box-shadow: var(--shadow);
+}
+.survey-rows { display: grid; gap: 22px; margin-top: 24px; }
+.survey-row { display: grid; grid-template-columns: 1fr; gap: 8px; }
+.survey-q { font-size: 15px; color: var(--ink-2); }
+.survey-q b { font-size: 24px; color: var(--green); margin-right: 10px; }
+.survey-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(18, 51, 40, .08);
+  overflow: hidden;
+}
+.survey-bar i {
+  display: block;
+  height: 100%;
+  width: var(--w, 50%);
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--green-2), var(--green));
+}
+.survey-insight { margin: 0; font-size: 13px; color: var(--muted); }
+
+/* 痛点汇总标题 */
+.pain-summary { margin-top: 44px; }
+.pain-title { margin-bottom: 16px; }
+
+/* 核心问题定义 */
+.decision-block {
+  margin-top: 40px;
+  background: var(--deep);
+  color: #eef5ef;
+  border-radius: var(--radius);
+  padding: 34px;
+  box-shadow: var(--shadow);
+}
+.decision-block .eyebrow { color: var(--lime); }
+.decision-block h3 { margin: 6px 0 8px; color: #fff; }
+.decision-rule { margin: 0 0 20px; font-size: 14px; color: rgba(238, 245, 239, .75); }
+.decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.decision-card {
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: var(--radius-sm);
+  padding: 22px;
+}
+.decision-tag { display: block; font-size: 12px; color: var(--lime); margin-bottom: 10px; }
+.decision-card h4 { margin: 0 0 8px; font-size: 18px; color: #fff; }
+.decision-card p { margin: 0; font-size: 14px; color: rgba(238, 245, 239, .82); }
+.decision-result { margin: 22px 0 0; font-size: 14px; color: var(--lime); }
+
+/* 头脑风暴便签墙 */
+.idea-wall { margin-top: 40px; }
+.idea-photo {
+  margin: 18px 0 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  box-shadow: var(--shadow);
+}
+.idea-photo-btn { border-radius: var(--radius-sm); }
+.idea-photo-btn img,
+.artifact-btn.idea-photo-btn img {
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  background: #f7f8ee;
+}
+.idea-photo + .idea-photo { margin-top: 22px; }
+.idea-photo figcaption { margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--muted); }
+.idea-photo-hand { text-align: center; }
+.idea-photo-hand figcaption { text-align: center; }
+.idea-photo-hand .idea-photo-btn { width: fit-content; max-width: 100%; margin: 0 auto; }
+.idea-photo-hand .idea-photo-btn img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 620px;
+  margin: 0 auto;
+}
+.idea-group { margin-top: 44px; }
+.idea-notes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+}
+.idea-sticky {
+  display: block;
+  padding: 22px 18px;
+  border-radius: 6px 6px 14px 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+  box-shadow: 0 10px 24px rgba(17, 56, 41, .14);
+  transform: rotate(-1.2deg);
+}
+.idea-sticky:nth-child(even) { transform: rotate(1.4deg); }
+.idea-sticky i { font-style: normal; color: rgba(18, 51, 40, .6); font-size: 13px; }
+.is-yellow { background: #e9f7c9; }
+.is-pink { background: #d5e9be; }
+.is-blue { background: #d7eee2; }
+.is-green { background: #f2ecd2; }
+
+/* 所选想法 / AI 想法 */
+.selected-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 20px; }
+.selected-card {
+  background: var(--lime-soft);
+  border: 1px solid rgba(30, 122, 83, .22);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+}
+.selected-card > span { font-size: 12px; font-weight: 900; letter-spacing: 2px; color: var(--green); }
+.selected-card h4 { margin: 8px 0; font-size: 16px; color: var(--deep); }
+.selected-card p { margin: 0; font-size: 14px; color: var(--ink-2); }
+.ai-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+.ai-card {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--green-2);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+}
+.ai-card h4 { margin: 0 0 8px; font-size: 15px; color: var(--green); }
+.ai-card p { margin: 0; font-size: 13px; color: var(--ink-2); }
+
+/* 方案选定 */
+.plan-block { margin-top: 46px; }
+.plan-lead { margin: 0; font-size: 14px; color: var(--ink-2); }
+.plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 20px; }
+.plan-card {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.plan-card span { display: inline-block; font-size: 12px; color: var(--muted); letter-spacing: 2px; margin-bottom: 10px; }
+.plan-card h3 { margin: 0 0 8px; font-size: 18px; color: var(--green); }
+.plan-card p { margin: 0; font-size: 14px; color: var(--ink-2); }
+.redefine {
+  margin-top: 26px;
+  background: var(--lime-soft);
+  border: 1px dashed rgba(30, 122, 83, .4);
+  border-radius: var(--radius-sm);
+  padding: 24px 28px;
+}
+.redefine-mark {
+  display: inline-block;
+  background: var(--green);
+  color: #fff;
+  font-size: 13px;
+  border-radius: 999px;
+  padding: 4px 14px;
+  margin-bottom: 12px;
+}
+.redefine p { margin: 0; font-size: 17px; font-weight: 600; color: var(--deep); }
+
+/* 初代三大基础功能 */
+.base-functions {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+}
+.base-functions-title { display: block; font-size: 12px; color: var(--lime); letter-spacing: 2px; margin-bottom: 10px; }
+.chip-row-light span { background: rgba(255, 255, 255, .12); color: #eef5ef; }
+
+/* 手绘草稿 */
+.draft-strip { margin-bottom: 18px; }
+.draft-note { margin: 10px 0 0; font-size: 13px; color: rgba(238, 245, 239, .7); }
+.mini-title-light { color: var(--lime); }
+
+/* 多端分工 */
+.device-roles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 40px;
+}
+.device-card {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 26px;
+  box-shadow: var(--shadow);
+}
+.device-icon { font-size: 30px; display: block; margin-bottom: 10px; }
+.device-card h3 { margin: 0 0 8px; font-size: 17px; color: var(--green); }
+.device-card p { margin: 0; font-size: 14px; color: var(--ink-2); }
+
+/* 录屏演示 */
+.video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 18px; }
+.video-slot { margin: 0; }
+.video-frame {
+  height: 190px;
+  border-radius: var(--radius-sm);
+  background: rgba(18, 51, 40, .06);
+  border: 1px dashed rgba(30, 122, 83, .4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: 16px;
+}
+.video-frame .shot-name { font-size: 13px; color: var(--ink-2); }
+.video-frame video { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.video-slot figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); text-align: center; }
+
+/* 项目总结 & 团队分工 */
+.summary .storyline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 44px;
+}
+.storyline-card {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 26px;
+  box-shadow: var(--shadow);
+}
+.storyline-card span { font-size: 12px; color: var(--muted); letter-spacing: 2px; }
+.storyline-card h3 { margin: 8px 0; font-size: 18px; color: var(--green); }
+.storyline-card p { margin: 0; font-size: 14px; color: var(--ink-2); }
+.team-block {
+  background: var(--deep);
+  color: #eef5ef;
+  border-radius: var(--radius);
+  padding: 34px;
+  box-shadow: var(--shadow);
+}
+.team-block .mini-title { color: var(--lime); }
+.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+.team-card {
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: var(--radius-sm);
+  padding: 22px;
+}
+.role-tag {
+  display: inline-block;
+  background: var(--lime);
+  color: var(--deep);
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 3px 12px;
+  margin-bottom: 10px;
+}
+.team-card h3 { margin: 0 0 8px; font-size: 17px; color: #fff; }
+.team-card p { margin: 0; font-size: 14px; color: rgba(238, 245, 239, .82); }
+
+/* 封面：单张 3.0 首页截图 */
+.version-collage-single { height: 400px; align-items: center; margin-bottom: 34px; }
+.cover-shot-single {
+  flex: 0 0 auto;
+  max-width: none;
+  transform: rotate(-2deg);
+}
+.cover-shot-single:hover { transform: rotate(-1deg) translateY(-6px) scale(1.03); }
+.cover-shot-single img {
+  width: auto;
+  height: 380px;
+  object-fit: contain;
+  object-position: center;
+  border: 3px solid rgba(255, 255, 255, .86);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .4);
+}
+.cover-shot-single .cover-shot-label { bottom: -36px; font-size: 11px; letter-spacing: .04em; }
+.version-collage-single::before { left: 26%; right: 26%; bottom: 4px; }
+
+@media (max-width: 960px) {
+  .problem-grid, .idea-notes { grid-template-columns: repeat(2, 1fr); }
+  .plan-grid, .device-roles, .video-grid, .summary .storyline { grid-template-columns: 1fr; }
+  .decision-grid, .team-grid, .selected-grid { grid-template-columns: 1fr; }
+  .ai-grid { grid-template-columns: repeat(2, 1fr); }
+  .version-collage-single { height: 330px; }
+  .cover-shot-single img { height: 310px; }
+}
+
+@media (max-width: 640px) {
+  .problem-grid, .idea-notes, .ai-grid { grid-template-columns: 1fr; }
+  .survey-block, .decision-block, .team-block { padding: 24px; }
+  .version-collage-single { height: 260px; }
+  .cover-shot-single img { height: 245px; border-radius: 16px; }
+  .artifact-btn-dark img { height: 250px; }
 }

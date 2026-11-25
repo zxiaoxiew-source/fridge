@@ -188,7 +188,7 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     revealItems.forEach(function (item) { revealObserver.observe(item); });
 
-    var sectionIds = ['prologue', 'pre-research', 'v1', 'v2', 'research', 'v3', 'future'];
+    var sectionIds = ['prologue', 'problem', 'pre-research', 'ideation', 'v1', 'v2', 'research', 'v3', 'demo', 'method', 'future', 'summary'];
     var sectionObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
