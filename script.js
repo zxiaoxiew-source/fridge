@@ -530,3 +530,33 @@
 
   render();
 })();
+
+// ===== 演示录屏：进入视口自动播放，离开暂停；减少动态效果时不自动播放 =====
+(function () {
+  'use strict';
+  var videos = document.querySelectorAll('.demo-video');
+  if (!videos.length) return;
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) {
+    videos.forEach(function (v) {
+      v.removeAttribute('autoplay');
+      v.removeAttribute('loop');
+      v.pause();
+    });
+    return;
+  }
+
+  if (!('IntersectionObserver' in window)) return;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var p = entry.target.play();
+        if (p && p.catch) p.catch(function () {});
+      } else {
+        entry.target.pause();
+      }
+    });
+  }, { threshold: 0.25 });
+  videos.forEach(function (v) { observer.observe(v); });
+})();
