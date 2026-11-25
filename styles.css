@@ -1863,23 +1863,23 @@ body.presentation .slide-hint { display: block; }
 .cover-title span { font-size: clamp(26px, 2.6vw, 34px); }
 .cover-title small { margin-top: 8px; font-size: 11px; letter-spacing: .22em; }
 .cover-foot { margin-top: 12px; font-size: 10px; }
-.version-collage-single { height: 510px; margin-bottom: 30px; }
+.version-collage-single { height: 585px; margin-bottom: 30px; }
 .cover-shot-single img {
   width: auto;
-  height: 480px;
+  height: 555px;
   object-fit: contain;
   object-position: center;
 }
 .cover-shot-single .cover-shot-label { bottom: -32px; }
 .version-collage-single::before { left: 30%; right: 30%; bottom: 4px; }
 @media (max-width: 960px) {
-  .version-collage-single { height: 400px; }
-  .cover-shot-single img { height: 370px; }
+  .version-collage-single { height: 460px; }
+  .cover-shot-single img { height: 430px; }
 }
 @media (max-width: 640px) {
   .cover-card { padding: 18px; }
-  .version-collage-single { height: 360px; }
-  .cover-shot-single img { height: 330px; }
+  .version-collage-single { height: 410px; }
+  .cover-shot-single img { height: 380px; }
 }
 
 /* 懒加载图片预留比例：避免滚动时布局跳动导致锚点落点偏移 */
