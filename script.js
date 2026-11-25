@@ -206,3 +206,238 @@
     revealItems.forEach(function (item) { item.classList.add('visible'); });
   }
 })();
+
+// ===== 演示模式：PPT 式翻页浏览 =====
+(function () {
+  'use strict';
+
+  var body = document.body;
+  var progressBar = document.getElementById('progressBar');
+  var lightbox = document.getElementById('researchLightbox');
+
+  // 每个板块的直接子元素 = 一页幻灯片
+  var containers = Array.prototype.slice.call(
+    document.querySelectorAll('.hero, section.section, section.chapter, .ending')
+  );
+  var slides = [];
+  containers.forEach(function (container) {
+    var source = container.classList.contains('chapter')
+      ? (container.querySelector('.chapter-inner') || container)
+      : container;
+    Array.prototype.forEach.call(source.children, function (child) {
+      if (child.nodeType !== 1) return;
+      if (child.getAttribute && child.getAttribute('aria-hidden') === 'true') return;
+      var tag = child.tagName;
+      if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'LINK') return;
+      slides.push({ el: child, container: container });
+    });
+  });
+  if (!slides.length) return;
+
+  // 计算放回原位的锚点（原位置之后第一个不属于幻灯片的兄弟节点）
+  slides.forEach(function (s) {
+    var ref = s.el.nextSibling;
+    while (ref && slides.some(function (x) { return x.el === ref; })) {
+      ref = ref.nextSibling;
+    }
+    s.anchor = ref;
+    s.parent = s.el.parentNode;
+  });
+
+  var stage = null;
+  var current = 0;
+  var active = false;
+  var wheelLock = false;
+  var touchStartY = null;
+
+  var toggleBtn = document.createElement('button');
+  toggleBtn.type = 'button';
+  toggleBtn.className = 'slide-toggle';
+  toggleBtn.textContent = '▶ 演示模式';
+  toggleBtn.addEventListener('click', function () {
+    if (active) exitMode(); else enterMode();
+  });
+  body.appendChild(toggleBtn);
+
+  var ui = document.createElement('div');
+  ui.className = 'slide-ui';
+  var prevBtn = document.createElement('button');
+  prevBtn.type = 'button';
+  prevBtn.textContent = '‹';
+  prevBtn.setAttribute('aria-label', '上一页');
+  var countEl = document.createElement('span');
+  countEl.className = 'slide-count';
+  var nextBtn = document.createElement('button');
+  nextBtn.type = 'button';
+  nextBtn.textContent = '›';
+  nextBtn.setAttribute('aria-label', '下一页');
+  prevBtn.addEventListener('click', function () { show(current - 1); });
+  nextBtn.addEventListener('click', function () { show(current + 1); });
+  ui.appendChild(prevBtn);
+  ui.appendChild(countEl);
+  ui.appendChild(nextBtn);
+  body.appendChild(ui);
+
+  var hint = document.createElement('div');
+  hint.className = 'slide-hint';
+  hint.textContent = '滚轮 / 方向键 / 空格 翻页 · Esc 退出';
+  body.appendChild(hint);
+
+  function buildStage() {
+    stage = document.createElement('div');
+    stage.className = 'slide-stage';
+    slides.forEach(function (s) {
+      var item = document.createElement('div');
+      item.className = 'slide-item';
+      // 继承容器的类名（去掉 section 布局类），保证原有样式选择器继续生效
+      Array.prototype.forEach.call(s.container.classList, function (name) {
+        if (name !== 'section') item.classList.add(name);
+      });
+      var inner = document.createElement('div');
+      inner.className = 'slide-inner';
+      inner.appendChild(s.el);
+      item.appendChild(inner);
+      stage.appendChild(item);
+      s.item = item;
+    });
+    body.appendChild(stage);
+  }
+
+  function teardownStage() {
+    slides.forEach(function (s) {
+      if (s.item) s.item.classList.remove('is-active');
+      if (s.anchor && s.anchor.parentNode === s.parent) s.parent.insertBefore(s.el, s.anchor);
+      else s.parent.appendChild(s.el);
+    });
+    if (stage && stage.parentNode) stage.parentNode.removeChild(stage);
+    stage = null;
+    slides.forEach(function (s) { delete s.item; });
+  }
+
+  function show(index) {
+    current = Math.max(0, Math.min(slides.length - 1, index));
+    slides.forEach(function (s, idx) {
+      if (s.item) s.item.classList.toggle('is-active', idx === current);
+    });
+    countEl.textContent = (current + 1) + ' / ' + slides.length;
+    if (progressBar) progressBar.style.width = ((current + 1) / slides.length * 100) + '%';
+    var item = slides[current].item;
+    if (item) item.scrollTop = 0;
+    var containerId = slides[current].container.id;
+    if (containerId) {
+      Array.prototype.forEach.call(document.querySelectorAll('.site-nav a'), function (link) {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + containerId);
+      });
+    }
+  }
+
+  function go(delta) { show(current + delta); }
+
+  function enterMode() {
+    active = true;
+    body.classList.add('presentation');
+    buildStage();
+    var start = 0;
+    var hash = location.hash.replace('#', '');
+    if (hash) {
+      var target = document.getElementById(hash);
+      if (target) {
+        slides.some(function (s, idx) {
+          if (s.container === target || s.el === target || s.el.contains(target)) {
+            start = idx;
+            return true;
+          }
+          return false;
+        });
+      }
+    }
+    show(start);
+    toggleBtn.textContent = '✕ 退出演示';
+  }
+
+  function exitMode() {
+    active = false;
+    body.classList.remove('presentation');
+    teardownStage();
+    toggleBtn.textContent = '▶ 演示模式';
+  }
+
+  // 键盘翻页
+  document.addEventListener('keydown', function (event) {
+    if (!active) return;
+    if (lightbox && lightbox.classList.contains('open')) return;
+    switch (event.key) {
+      case 'ArrowDown':
+      case 'ArrowRight':
+      case 'PageDown':
+      case ' ':
+        event.preventDefault();
+        go(1);
+        break;
+      case 'ArrowUp':
+      case 'ArrowLeft':
+      case 'PageUp':
+        event.preventDefault();
+        go(-1);
+        break;
+      case 'Home':
+        event.preventDefault();
+        show(0);
+        break;
+      case 'End':
+        event.preventDefault();
+        show(slides.length - 1);
+        break;
+      case 'Escape':
+        exitMode();
+        break;
+    }
+  });
+
+  // 滚轮翻页：页面内容未滚动到边缘时优先滚动内容
+  document.addEventListener('wheel', function (event) {
+    if (!active) return;
+    var item = slides[current].item;
+    if (!item) return;
+    var atTop = item.scrollTop <= 1;
+    var atBottom = item.scrollTop + item.clientHeight >= item.scrollHeight - 2;
+    var down = event.deltaY > 0;
+    if (down && !atBottom) return;
+    if (!down && !atTop) return;
+    event.preventDefault();
+    if (wheelLock) return;
+    wheelLock = true;
+    window.setTimeout(function () { wheelLock = false; }, 650);
+    go(down ? 1 : -1);
+  }, { passive: false });
+
+  // 触屏滑动翻页
+  document.addEventListener('touchstart', function (event) {
+    if (!active) return;
+    touchStartY = event.touches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', function (event) {
+    if (!active || touchStartY === null) return;
+    var delta = touchStartY - event.changedTouches[0].clientY;
+    touchStartY = null;
+    if (Math.abs(delta) > 60) go(delta > 0 ? 1 : -1);
+  }, { passive: true });
+
+  // 演示模式下点击页内锚点 → 跳到对应页
+  document.addEventListener('click', function (event) {
+    if (!active) return;
+    var link = event.target.closest ? event.target.closest('a[href^="#"]') : null;
+    if (!link) return;
+    var id = link.getAttribute('href').slice(1);
+    if (!id) return;
+    var target = document.getElementById(id);
+    if (!target) return;
+    for (var i = 0; i < slides.length; i++) {
+      if (slides[i].container === target || slides[i].el === target || slides[i].el.contains(target)) {
+        event.preventDefault();
+        show(i);
+        return;
+      }
+    }
+  });
+})();

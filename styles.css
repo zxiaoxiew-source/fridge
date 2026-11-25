@@ -1245,3 +1245,125 @@ tr:last-child td { border-bottom: 0; }
   .cover-shot-single img { height: 245px; border-radius: 16px; }
   .artifact-btn-dark img { height: 250px; }
 }
+
+/* ===== 演示模式：PPT 式翻页浏览 ===== */
+body.presentation { overflow: hidden; }
+body.presentation .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+
+.slide-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 950;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--deep);
+  color: var(--lime);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(13, 43, 32, .3);
+  transition: transform .2s ease;
+}
+.slide-toggle:hover { transform: translateY(-2px); }
+
+.slide-stage { position: fixed; inset: 0; z-index: 800; display: none; background: var(--paper); }
+body.presentation .slide-stage { display: block; }
+
+.slide-item {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  background: var(--paper);
+  padding: 100px clamp(20px, 5vw, 60px) 140px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(28px);
+  transition: opacity .45s ease, transform .45s ease, visibility 0s linear .45s;
+}
+.slide-item.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+.slide-inner { width: min(1180px, 100%); margin: 0 auto; }
+
+/* 让依赖容器类名的后代选择器继续生效，同时压掉容器自身的布局样式 */
+.slide-item.chapter,
+.slide-item.ending,
+.slide-item.problem,
+.slide-item.overview,
+.slide-item.pre-research,
+.slide-item.ideation,
+.slide-item.lab,
+.slide-item.research,
+.slide-item.anchors,
+.slide-item.experience,
+.slide-item.demo,
+.slide-item.principles-wrap,
+.slide-item.future,
+.slide-item.summary { padding: 100px clamp(20px, 5vw, 60px) 140px; }
+.slide-item.chapter { position: absolute; overflow: visible; min-height: 0; }
+
+.slide-item.slide-dark { background: var(--deep-2); color: #fff; }
+.slide-item.slide-green { background: linear-gradient(150deg, #14523c, #0d3829); color: #fff; }
+.slide-item.slide-hero {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(205, 241, 121, .4), transparent 34%),
+    radial-gradient(circle at 85% 75%, rgba(94, 196, 147, .22), transparent 38%),
+    var(--paper);
+}
+.slide-item.slide-ending { background: linear-gradient(180deg, var(--paper), #eaf3e6); }
+
+.slide-ui {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 940;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(13, 43, 32, .9);
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .28);
+}
+body.presentation .slide-ui { display: flex; }
+.slide-ui button {
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.slide-ui button:hover { color: var(--lime); }
+.slide-count { min-width: 70px; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: .08em; }
+
+.slide-hint {
+  position: fixed;
+  top: 76px;
+  right: 18px;
+  z-index: 940;
+  display: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 253, 247, .92);
+  font-size: 12px;
+  color: var(--muted);
+}
+body.presentation .slide-hint { display: block; }
+
+@media (max-width: 640px) {
+  .slide-item { padding: 84px 18px 120px; }
+  .slide-hint { display: none !important; }
+  .slide-toggle { right: 12px; bottom: 12px; }
+}
